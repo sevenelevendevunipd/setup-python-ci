@@ -30,7 +30,7 @@ runs:
         virtualenvs-in-project: true
         installer-parallel: true
     - id: cache-deps
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: .venv
         key: pydeps-${{ hashFiles('**/poetry.lock') }}-py${{ inputs.python-version }}-${{ runner.os }}
