@@ -35,8 +35,11 @@ runs:
         path: .venv
         key: pydeps-${{ hashFiles('**/poetry.lock') }}-py${{ inputs.python-version }}-${{ runner.os }}
     - run: poetry install --no-interaction --no-root --without=dev
+      shell: bash
       if: steps.cache-deps.outputs.cache-hit != 'true'
     - run: poetry install --no-interaction --no-root
+      shell: bash
       if: steps.cache-deps.outputs.cache-hit != 'true' && inputs.install-dev-deps == true
     - run: poetry install --no-interaction
+      shell: bash
 
